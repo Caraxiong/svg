@@ -72,3 +72,30 @@ SVG 的 <circle> 用来创建一个圆。
 9. A = elliptical Arc
 10. Z = closepath
 ######注释：以上所有命令均允许小写字母。大写表示绝对定位，小写表示相对定位。
+***
+**高斯模糊（Gaussian Blur）**
+1. `<filter>` 标签用来定义 SVG 滤镜。
+2. `<filter>` 标签使用必需的 id 属性来定义向图形应用哪个滤镜
+3. `<filter>` 标签必须嵌套在 `<defs>` 标签内。`<defs>` 标签是 definitions 的缩写，它允许对诸如滤镜等特殊元素进行定义
+***
+1. `<filter>` 标签的 id 属性可为滤镜定义一个唯一的名称（同一滤镜可被文档中的多个元素使用）
+2. filter:url 属性用来把元素链接到滤镜。当链接滤镜 id 时，必须使用 # 字符
+3. 滤镜效果是通过 `<feGaussianBlur>` 标签进行定义的。fe 后缀可用于所有的滤镜
+4. `<feGaussianBlur>` 标签的 stdDeviation 属性可定义模糊的程度
+5. in="SourceGraphic" 这个部分定义了由整个图像创建效果
+***
+**`<linearGradient>` 线性渐变**
+1. `<linearGradient>` 可用来定义 SVG 的线性渐变。
+2. `<linearGradient>` 标签的 id 属性可为渐变定义一个唯一的名称
+3. fill:url(#orange_red) 属性把 ellipse 元素链接到此渐变
+4. `<linearGradient>` 标签的 x1、x2、y1、y2 属性可定义渐变的开始和结束位置
+  * 当 y1 和 y2 相等，而 x1 和 x2 不同时，可创建水平渐变
+  * 当 x1 和 x2 相等，而 y1 和 y2 不同时，可创建垂直渐变
+  * 当 x1 和 x2 不同，且 y1 和 y2 不同时，可创建角形渐变
+5. 渐变的颜色范围可由两种或多种颜色组成。每种颜色通过一个 `<stop>` 标签来规定。offset 属性用来定义渐变的开始和结束位置
+***
+**`<radialGradient>` 用来定义放射性渐变。**
+1. `<radialGradient>` 标签的 id 属性可为渐变定义一个唯一的名称
+2. fill:url(#grey_blue) 属性把 ellipse 元素链接到此渐变
+3. cx、cy 和 r 属性定义外圈，而 fx 和 fy 定义内圈 渐变的颜色范围可由两种或多种颜色组成
+4. 每种颜色通过一个 `<stop>` 标签来规定。offset 属性用来定义渐变的开始和结束位置。
